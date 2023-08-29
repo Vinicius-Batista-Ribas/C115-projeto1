@@ -1,0 +1,23 @@
+## Sobre o Codigo
+
+Codigo simula um programa cliente e servidor, onde o Server envia algumas perguntas para o cliente,
+enquanto o cliente responde com alternativas de 'A' a 'D', onde o server responde caso o cliente acertou ou não,
+e ao final mostra o resultados obtido pelo cliente.
+
+
+## fUNCIONAMENTO
+
+Para acessar o banco de dados precisa dar um "docker-compose up", e acessar "http://localhost:54321", logar com os dados do 'PGADMIN' do arquivo docker.
+
+em caso da banco estar vazio, segue o comando de contruir o banco.
+
+CREATE TABLE C115 (
+	id SERIAL PRIMARY KEY,
+	quest VARCHAR(200),
+	answer CHAR(1)
+);
+
+INSERT INTO C115 (quest,answer) VALUES
+('Qual o jogo mais jogado atualmente?\na) League of Legends\nb) Minecraft\nc) Genshin Impact\nd) PUBG','d'),
+('Qual anime teve preimação de melhor abertura de 2023?\na) The Rumbling(Attack on Titan)\nb) This Fffire(Cyberpunk)\nc) Idol(Oshi no Ko)\nd) Naked Hero(ranking of Kings Cour)','a'),
+('No anime ""BLEACH"" o protagonista Ichigo Kurosaki tem os poderes de quais raças?\na) Shinigami\nb) Quincy\nc) Hollow\nd) Todas as alternativas','d');

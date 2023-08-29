@@ -2,6 +2,7 @@ from socket import *
 import psycopg2
 
 def BD():
+    # CONEXAO AO BANCO DE DADOS
     dbname = 'root'
     user = 'root'
     password = 'root'
@@ -16,12 +17,13 @@ def BD():
         port=port
     )
 
+    # PEGANDO AS PERGUNTAS
     cursor = conection.cursor()
     cursor.execute("SELECT quest FROM c115")
     rows = cursor.fetchall()
     perguntas = [row[0] for row in rows]
 
-
+    # PEGANDO AS RESPOSTAS
     cursor.execute("SELECT answer FROM c115")
     rows = cursor.fetchall()
     respostas = [row[0] for row in rows]
@@ -36,6 +38,7 @@ def BD():
 host = '127.0.0.1'
 Server_Port = 12000
 
+# DEFININDO PORTA PARA CONEXÃO COM CLIENTE
 SocketServer = socket(AF_INET, SOCK_STREAM)
 SocketServer.bind((host,Server_Port))
 SocketServer.listen()
@@ -46,6 +49,7 @@ Score = 0
 print("server Ready")
 client_socket, client_addres = SocketServer.accept()
 print("conexão estabelecida")
+# MANDANDO AS PERGUNTAS E RECEBENDO AS RESPOSTAS
 for i, question in enumerate(quest):
         client_socket.send(question.encode())
         client_response = client_socket.recv(1024).decode().strip()
@@ -57,5 +61,6 @@ for i, question in enumerate(quest):
 
 
 client_socket.send(f"Você acertou {Score} questões.\n".encode())
+# FECHANDO SERVIDOR
 client_socket.close()
 SocketServer.close()
