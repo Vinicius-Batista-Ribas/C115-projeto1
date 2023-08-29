@@ -7,7 +7,7 @@ e ao final mostra o resultados obtido pelo cliente.
 
 ## fUNCIONAMENTO
 
-Para acessar o banco de dados precisa dar um "docker-compose up", e acessar "http://localhost:54321", logar com os dados do 'PGADMIN' do arquivo docker.
+O banco de dados usado para esse programa foi o postgres, usado por um docker. Para acessar o banco de dados precisa dar um "docker-compose up", e acessar "http://localhost:54321", logar com os dados do 'PGADMIN' do arquivo docker.
 
 em caso da banco estar vazio, segue o comando de contruir o banco.
 
